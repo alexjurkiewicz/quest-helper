@@ -150,6 +150,7 @@ public class ArdougneHard extends ComplexStateQuestHelper
 		return doHard;
 	}
 
+	@Override
 	public void setupRequirements()
 	{
 		notRecharge = new VarplayerRequirement(1196, false, 26);

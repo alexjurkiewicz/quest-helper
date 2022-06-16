@@ -139,6 +139,7 @@ public class KandarinHard extends ComplexStateQuestHelper
 		return doHard;
 	}
 
+	@Override
 	public void setupRequirements()
 	{
 		notCatchStur = new VarplayerRequirement(1178, false, 26);
