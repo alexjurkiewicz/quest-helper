@@ -301,7 +301,7 @@ public class QuestHelperPlugin extends Plugin
 			clientThread.invokeLater(() -> {
 				quests.forEach((name, questHelper) -> {
 					eventBus.register(questHelper);
-					questHelper.init();
+					questHelper.setupRequirements();
 					eventBus.unregister(questHelper);
 				});
 				// Update with new items
