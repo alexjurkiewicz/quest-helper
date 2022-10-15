@@ -396,7 +396,7 @@ public class QuestHelperPlugin extends Plugin
 		if (state == GameState.LOGIN_SCREEN)
 		{
 			questBank.saveBankToConfig();
-			panel.refresh(Collections.emptyList(), true, new HashMap<>());
+			SwingUtilities.invokeLater(() -> panel.refresh(Collections.emptyList(), true, new HashMap<>()));
 			questBank.emptyState();
 			if (selectedQuest != null && selectedQuest.getCurrentStep() != null)
 			{
@@ -905,7 +905,7 @@ public class QuestHelperPlugin extends Plugin
 			.stream()
 			.filter(QuestHelperConfig.QuestFilter.QUEST)
 			.filter(QuestDetails::isNotCompleted)
-//			.filter((quest) -> quest.getQuest() != QuestHelperQuest.CHECK_ITEMS)
+			.filter((quest) -> quest.getQuest() != QuestHelperQuest.CHECK_ITEMS)
 			.sorted(config.orderListBy())
 			.collect(Collectors.toList());
 
@@ -923,13 +923,6 @@ public class QuestHelperPlugin extends Plugin
 			{
 				pred = pred.or(QuestHelperConfig.QuestFilter.ACHIEVEMENT_DIARY);
 			}
-
-			List<QuestHelper> filteredQuests = quests.values()
-				.stream()
-				.filter(pred)
-				.filter(Quest::isNotCompleted)
-				.sorted(config.orderListBy())
-				.collect(Collectors.toList());
 
 			clientThread.invokeLater(() -> {
 				SortedMap<String, List<ItemRequirement>> newReqs = new TreeMap<>();

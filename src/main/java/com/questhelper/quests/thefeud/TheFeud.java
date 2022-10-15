@@ -36,7 +36,6 @@ import com.questhelper.questhelpers.BasicQuestHelper;
 import com.questhelper.requirements.ComplexRequirement;
 import com.questhelper.requirements.conditional.ObjectCondition;
 import com.questhelper.requirements.item.ItemRequirement;
-import com.questhelper.requirements.item.ItemRequirements;
 import com.questhelper.requirements.Requirement;
 import com.questhelper.requirements.player.SkillRequirement;
 import com.questhelper.requirements.var.VarbitRequirement;
@@ -247,6 +246,8 @@ public class TheFeud extends BasicQuestHelper
 		highlightedCoins.setHighlightInInventory(true);
 		gloves = new ItemRequirement("Leather or Graceful Gloves", ItemID.LEATHER_GLOVES).isNotConsumed();
 		gloves.addAlternates(ItemCollections.GRACEFUL_GLOVES);
+		combatGear = new ItemRequirement("Combat Gear bring Range or Mage Gear if safe spotting.", -1, -1 );
+		combatGear.setDisplayItemId(BankSlotIcons.getCombatGear());
 
 		headPiece = new ItemRequirement("Kharidian Headpiece", ItemID.KHARIDIAN_HEADPIECE).isNotConsumed();
 		headPiece.setHighlightInInventory(true);
@@ -296,16 +297,9 @@ public class TheFeud extends BasicQuestHelper
 		//a
 		notThroughShantayGate = new Conditions(LogicType.NAND, inShantayDesertSide);
 
-		//Blackjack
-		oakBlackjackEquipped = new ItemRequirements(new ItemRequirement("Oak Blackjack", ItemID.OAK_BLACKJACK, 1, true));
-
 		//Dung
 		doesNotHaveBucket = new ComplexRequirement(LogicType.NOR, "", new ItemRequirement("Bucket", ItemID.BUCKET));
 		dungNearby = new ObjectCondition(ObjectID.DUNG);
-
-		//Combat Gear
-		combatGear = new ItemRequirement("Combat Gear bring Range or Mage Gear if safe spotting.", -1, -1 );
-		combatGear.setDisplayItemId(BankSlotIcons.getCombatGear());
 	}
 
 	public void setupSteps()

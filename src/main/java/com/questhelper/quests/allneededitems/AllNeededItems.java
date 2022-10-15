@@ -76,10 +76,7 @@ public class AllNeededItems extends ComplexStateQuestHelper
 		for (ItemRequirement req : reqs)
 		{
 			ItemRequirement newReq = req;
-			if (req.getId() == -1)
-			{
-				continue;
-			}
+			if (req == null || req.getId() == -1) continue;
 
 			if (req.getQuantity() == -1) newReq = req.quantity(1);
 

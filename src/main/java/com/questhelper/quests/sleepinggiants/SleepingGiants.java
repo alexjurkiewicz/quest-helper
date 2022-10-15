@@ -102,7 +102,7 @@ public class SleepingGiants extends BasicQuestHelper
 	public Map<Integer, QuestStep> loadSteps()
 	{
 		setupZones();
-		setupItemRequirements();
+		setupRequirements();
 		setupConditions();
 		setupSteps();
 
@@ -177,7 +177,7 @@ public class SleepingGiants extends BasicQuestHelper
 		return steps;
 	}
 
-	public void setupItemRequirements()
+	public void setupRequirements()
 	{
 		oakLogs = new ItemRequirement("Oak Logs", ItemID.OAK_LOGS);
 		oakLogs.setQuantity(3);

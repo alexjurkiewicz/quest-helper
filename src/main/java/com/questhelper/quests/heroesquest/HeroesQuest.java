@@ -437,7 +437,7 @@ public class HeroesQuest extends BasicQuestHelper
 		reqs.add(harralanderUnf);
 		reqs.add(pickaxe);
 		reqs.add(iceGloves);
-		if (inBlackArmGang.check(client))
+		if (new VarplayerRequirement(146, 4, Operation.GREATER_EQUAL).check(client))
 		{
 			reqs.add(blackFullHelm);
 			reqs.add(blackPlatebody);

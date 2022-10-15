@@ -282,6 +282,7 @@ public class QuestOverviewPanel extends JPanel
 
 	public void updateHighlight(Client client, QuestStep newStep)
 	{
+		if (questStepPanelList == null) return;
 		questStepPanelList.forEach(panel -> {
 			if (panel.panelDetails.getHideCondition() == null || !panel.panelDetails.getHideCondition().check(client))
 			{
